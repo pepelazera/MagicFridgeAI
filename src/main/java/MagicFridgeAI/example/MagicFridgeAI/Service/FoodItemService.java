@@ -2,13 +2,15 @@ package MagicFridgeAI.example.MagicFridgeAI.Service;
 
 import MagicFridgeAI.example.MagicFridgeAI.Model.FoodItemModel;
 import MagicFridgeAI.example.MagicFridgeAI.Repository.FoodItemRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class FoodItemService {
 
-    private FoodItemRepository foodItemRepository;
+    private final FoodItemRepository foodItemRepository;
 
     public FoodItemService(FoodItemRepository foodItemRepository) {
         this.foodItemRepository = foodItemRepository;

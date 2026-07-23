@@ -1,8 +1,11 @@
 package MagicFridgeAI.example.MagicFridgeAI.Model;
 
+import MagicFridgeAI.example.MagicFridgeAI.Enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -10,53 +13,25 @@ import java.time.LocalDate;
 @Table(name = "food_item")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class FoodItemModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
+
+    @Column(name = "name")
     private String name;
-    private Enum category;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 155, name = "category")
+    private Category category;
+
+    @Column(name = "quantity")
     private Integer quantity;
-    private LocalDate validatity;
 
-    public Long getId() {
-        return Id;
-    }
+    @Column(name = "validate")
+    private LocalDate validate;
 
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Enum getCategory() {
-        return category;
-    }
-
-    public void setCategory(Enum category) {
-        this.category = category;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public LocalDate getValidatity() {
-        return validatity;
-    }
-
-    public void setValidatity(LocalDate validatity) {
-        this.validatity = validatity;
-    }
 }
